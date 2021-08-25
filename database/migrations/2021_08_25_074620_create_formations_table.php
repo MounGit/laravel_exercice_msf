@@ -15,6 +15,8 @@ class CreateFormationsTable extends Migration
     {
         Schema::create('formations', function (Blueprint $table) {
             $table->id();
+            $table->string('nom', 30);
+            $table->text('descr');
             $table->timestamps();
         });
     }

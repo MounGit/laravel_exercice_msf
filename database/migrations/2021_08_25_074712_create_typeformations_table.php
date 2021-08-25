@@ -15,6 +15,7 @@ class CreateTypeformationsTable extends Migration
     {
         Schema::create('typeformations', function (Blueprint $table) {
             $table->id();
+            $table->string('nom', 30);
             $table->timestamps();
         });
     }

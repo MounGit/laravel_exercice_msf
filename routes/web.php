@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BatimentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,25 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// HOME
 Route::get('/', function () {
-    return view('welcome');
+    return view('pages.home');
 });
+
+// BATIMENTS
+Route::get('/batiments', [BatimentController::class, 'index'])->name('indexBat');
+
+Route::get('/batiments/back', [BatimentController::class, 'indexBack'])->name('indexBackBat');
+
+Route::get('/batiments/back/create', [BatimentController::class, 'create'])->name('createBat');
+
+Route::post('/batiments/back/store', [BatimentController::class, 'store'])->name('storeBat');
+
+Route::get('/batiments/{id}/back/show', [BatimentController::class, 'show'])->name('showBat');
+
+Route::delete('batiments/{id}/back/delete', [BatimentController::class, 'destroy'])->name('deleteBat');
+
+Route::get('/batiments/{id}/back/edit', ([BatimentController::class, 'edit']))->name('editBat');
+
+Route::put('/batiments/{id}/back/update', ([BatimentController::class, 'update']))->name('updateBat');
+
