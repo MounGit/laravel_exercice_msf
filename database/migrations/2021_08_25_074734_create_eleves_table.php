@@ -18,7 +18,7 @@ class CreateElevesTable extends Migration
             $table->string('nom', 30);
             $table->string('prenom', 30);
             $table->integer('age');
-            $table->boolean('etat');
+            $table->boolean('etat', 30);
             $table->timestamps();
         });
     }

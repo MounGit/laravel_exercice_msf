@@ -1,28 +1,23 @@
 @extends('template.main')
 
 @section('content')
-<section class="container mt-5 bg-warning">
-    <h2 class="mt-5 text-center">Formations</h2>
-    <div class="container mt-5 d-flex justify-content-center">
-        <table class="table">
+<section class="container my-5 bg-warning rounded">
+    <h2 class="mt-5 p-4 text-center">Formations</h2>
+    <div class="container p-5 d-flex justify-content-center ">
+        <table class="table w-50">
             <thead>
                 <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">First</th>
-                    <th scope="col">Last</th>
-                    <th scope="col">Handle</th>
+                    <th scope="col">Nom</th>
+                    <th scope="col">Description</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ( as )
+                @foreach ($data as $data)
                     <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
+                        <td>{{$data->nom}}</td>
+                        <td>{{$data->descr}}</td>
                     </tr>
                 @endforeach
-
             </tbody>
         </table>
     </div>
