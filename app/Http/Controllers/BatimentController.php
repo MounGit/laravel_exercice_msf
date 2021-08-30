@@ -20,6 +20,10 @@ class BatimentController extends Controller
         return view('backoffice.batimentsBack.batCreate');
     }
     public function store (Request $request){
+        request()->validate([
+            "nom"=>["required", "min:1", "max:30"],
+            "descr"=>["required", "min:1", "max:600"]
+        ]);
         $newEntry = new Batiment;
         $newEntry->nom = $request->nom;
         $newEntry->descr = $request->descr;
@@ -39,6 +43,10 @@ class BatimentController extends Controller
         return view('backoffice.batimentsBack.batEdit', compact('data'));
     }
     public function update (Batiment $id, Request $request){
+        request()->validate([
+            "nom"=>["required", "min:1", "max:30"],
+            "descr"=>["required", "min:1", "max:600"]
+        ]);
         $data = $id;
         $data->nom = $request->nom;
         $data->descr = $request->descr;

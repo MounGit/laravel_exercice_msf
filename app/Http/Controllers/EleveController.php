@@ -19,6 +19,12 @@ class EleveController extends Controller
         return view('backoffice.elevesBack.eleCreate');
     }
     public function store (Request $request){
+        request()->validate([
+            "nom"=>["required", "min:1", "max:30"],
+            "prenom"=>["required", "min:1", "max:30"],
+            "age"=>["required", "numeric"],
+            "etat"=>["required", "boolean"]
+        ]);
         $newEntry = new Eleve;
         $newEntry->nom = $request->nom;
         $newEntry->prenom = $request->prenom;
@@ -40,6 +46,12 @@ class EleveController extends Controller
         return view('backoffice.elevesBack.eleEdit', compact('data'));
     }
     public function update (Eleve $id, Request $request){
+        request()->validate([
+            "nom"=>["required", "min:1", "max:30"],
+            "prenom"=>["required", "min:1", "max:30"],
+            "age"=>["required", "numeric"],
+            "etat"=>["required", "boolean"]
+        ]);
         $data = $id;
         $data->nom = $request->nom;
         $data->prenom = $request->prenom;

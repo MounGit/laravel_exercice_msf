@@ -19,6 +19,10 @@ class FormationController extends Controller
         return view('backoffice.formationsBack.formCreate');
     }
     public function store (Request $request){
+        request()->validate([
+            "nom"=>["required", "min:1", "max:30"],
+            "descr"=>["required", "min:1", "max:600"]
+        ]);
         $newEntry = new Formation;
         $newEntry->nom = $request->nom;
         $newEntry->descr = $request->descr;
@@ -38,6 +42,10 @@ class FormationController extends Controller
         return view('backoffice.formationsBack.formEdit', compact('data'));
     }
     public function update (Formation $id, Request $request){
+        request()->validate([
+            "nom"=>["required", "min:1", "max:30"],
+            "descr"=>["required", "min:1", "max:600"]
+        ]);
         $data = $id;
         $data->nom = $request->nom;
         $data->descr = $request->descr;

@@ -2,6 +2,17 @@
 
 @section('content')
 <h3 class="mt-5 text-center">Modifiez l'élève</h3>
+<div class="container">
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+</div>
 <section class="container bg-warning d-flex flex-column justify-content-center  mt-5 ">
     <form class="d-flex flex-column my-5  w-50" action="{{route('updateEle', $data->id)}}" method="post">
         @csrf

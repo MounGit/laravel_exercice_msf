@@ -19,6 +19,9 @@ class TypeformationController extends Controller
         return view('backoffice.typesBack.typeCreate');
     }
     public function store (Request $request){
+        request()->validate([
+            "nom"=>["required", "min:1", "max:50"]
+        ]);
         $newEntry = new Typeformation;
         $newEntry->nom = $request->nom;
         $newEntry->save();
@@ -37,6 +40,9 @@ class TypeformationController extends Controller
         return view('backoffice.typesBack.typeEdit', compact('data'));
     }
     public function update (Typeformation $id, Request $request){
+        request()->validate([
+            "nom"=>["required"|"min:1"|"max:50"]
+        ]);
         $data = $id;
         $data->nom = $request->nom;
         $data->save();
